@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 class Dashboard extends Controller {
 
 	function __construct() {
@@ -8,7 +8,7 @@ class Dashboard extends Controller {
 		$logged = Session::get('loggedIn');
 		if ($logged == false) {
 			Session::destroy();
-			header('location: ../login');
+			header('location: '. URL . 'login');
 			exit;
 		}
 
@@ -24,7 +24,7 @@ class Dashboard extends Controller {
 	function logout()
 	{
 		Session::destroy();
-		header('location: ../login');
+		header('location: ' . URL . '/login');
 		exit;
 	}
 	function xhrInsert() {
